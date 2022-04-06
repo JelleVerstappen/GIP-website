@@ -5,6 +5,7 @@
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
       <!--Navbar-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -19,13 +20,13 @@
                     <a class="nav-link active" aria-current="page" href="https://mystifying-chandrasekhar-a9c848.netlify.app">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="https://dazzling-mcnulty-36d4a9.netlify.app">Blog</a>
+                    <a class="nav-link active" href="https://dazzling-mcnulty-36d4a9.netlify.app">Blog</a>
                   </li>
                 </ul>
-                <span class="navbar-text">
-                  GIP Jelle Verstappen 6IICT
-                </span>
               </div>
+              <span class="navbar-text">
+                GIP Jelle Verstappen 6IICT
+              </span>
             </div>
           </nav>
 
@@ -58,7 +59,7 @@
               </div>
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="Images/berichten6655477/20211201_102137.jpg" alt="PCB verwijderen" style = "height: 100%; max-width: 500px;">
+                <img class="d-block w-100" src="Images/berichten6655477/20211201_102137.jpg" alt="PCB verwijderen" style = "height: 100%; max-width: 500px; margin: auto;">
                 <div class="carousel-caption d-none d-md-block">
                   <h5 style="color: black;">PCB verwijderen</h5>
                   <p style="color:black">Verwijderen van de geïnstalleerde PCB</p>
@@ -72,20 +73,20 @@
               </div>
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="Images/berichten6655477/20220209_101736.jpg" alt="Bluetooth module verbinden met motor driver" style = "height:100%; max-width: 500px;">
+                <img class="d-block w-100" src="Images/berichten6655477/20220209_101736.jpg" alt="Bluetooth module verbinden met motor driver" style = "height:100%; max-width: 500px; margin: auto;">
                 <div class="carousel-caption d-none d-md-block">
                   <h5>Bluetooth module met motor driver verbinden</h5>
                   <p>Bluetooth module verbinden met de motor driver, voor het autootje te laten rijden </p>
               </div>
               </div>
               <div class="carousel-item">               
-                 <img class="d-block w-100" src="Images/berichten6655477/20220209_101812.jpg" alt="Close-up van de motordriver" style = "height:100%; max-width: 500px;">
+                 <img class="d-block w-100" src="Images/berichten6655477/20220209_101812.jpg" alt="Close-up van de motordriver" style = "height:100%; max-width: 500px; margin: auto;">
                 <div class="carousel-caption d-none d-md-block">
                   <h5>Close-up van de motor driver</h5>
                   </div>
               </div>
               <div class="carousel-item">
-                <img class="d-block w-100" src="Images/berichten6655477/20220215_090627.jpg" alt="Compleet met powerbank" style = "height:100%; max-width: 500px;">
+                <img class="d-block w-100" src="Images/berichten6655477/20220215_090627.jpg" alt="Compleet met powerbank" style = "height:100%; max-width: 500px; margin: auto;">
                 <div class="carousel-caption d-none d-md-block">
                   <h5>Voeding met powerbank</h5>
                   <p>Hier wordt alles gevoed met een powerbank van 2600mAh</p>
@@ -94,7 +95,9 @@
             </div>
         </div>
             </div>
-            <div class="container-fluid">
+
+            <!--Cards-->
+            <div class="container-fluid" style="max-width: 85%;">
               <div class="card-columns" style="column-count: 4; column-gap: 0.1rem;">
               <div class="card" style="width: 18rem;background:#dcdcdc;">
                 <div class="card-body">
@@ -123,11 +126,53 @@
                   <div class="card-body">
                     <h5 class="card-title">Meneer H. Clijsters</h5>
                     <h6 class="card-subtitle mb-2 text-muted">leerkracht Programmeren<br>ICT projecten</h6>
-                    <p class="card-text">Meneer Clijsters heeft meneer T. Issaris vervangen, en op het einde gezirgt dat ik de puntjes op de i zette. Hij heeft vooral met de blog en de website geholpen</p>
+                    <p class="card-text">Meneer H. Clijsters heeft meneer T. Issaris vervangen, en op het einde gezorgt dat ik de puntjes op de i zette. Hij heeft vooral met de blog en de website geholpen</p>
                     </div> 
                 </div>
                 </div>
                 </div>
+                
+                <!--Modal-->
+                <div class="modal" tabindex="-1" role="dialog">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+          <!--Footer-->
+          <div class="container-fluid">
+          <footer style="background: whitesmoke;" class="page-footer font-small black">
+            <!-- Copyright -->
+
+              <div class="text-right">
+                <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button" style ="border-color: black;"><i class="fas fa-chevron-up"></i> Back to top</a>
+              </div>
+              <div class="footer-copyright text-center py-3">
+              <a href="https://dazzling-mcnulty-36d4a9.netlify.app"> Mijn blog</a>
+              </div>
+              <div class="footer-copyright text-center py-3">Ontwikkeld door Jelle Verstappen 6IICT
+              </div>
+            </div>
+           </footer>
+        </div>
+          </html>
     </body>
 </html>
 
