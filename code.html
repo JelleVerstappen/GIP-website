@@ -5,7 +5,11 @@
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+      <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/styles/default.min.css">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+      <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.3.1/build/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
 
       <!--Navbar-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -23,7 +27,7 @@
                     <a class="nav-link active" href="https://dazzling-mcnulty-36d4a9.netlify.app">Blog</a>
                   </li>
                   <li class="nav-item">
-                      <a class = "nav-linkactive" href="C:\Users\VeJe071104\Desktop\Gipsite\Website\code.html">Code</a>
+                      <a class = "nav-link active" href="C:\Users\VeJe071104\Desktop\Gipsite\Website\code.html">Code</a>
                   </li>
                 </ul>
               </div>
@@ -32,3 +36,238 @@
               </span>
             </div>
           </nav>
+        <!--Intro joystick-->
+          <div class="container">
+              <h2>Code aansturen met joystick</h2>
+            <br>
+            <br>
+            <p>
+              Dit is de code voor het aansturen van de auto via joystick. De X- en Y-coördinaten van de joystick worden bijgehouden, afhankelijk daar van beweegt de auto.   
+            </p>
+            <br>
+         </div>
+
+        <!--Code joystick-->
+          <div class="container">
+              <pre class="pre-scrollable"><code class = "language-c++">
+                int motor1pin1 = 2;
+                int motor1pin2 = 3;
+                
+                int motor2pin1 = 4;
+                int motor2pin2 = 5;
+                
+                int joystick_X = A0;
+                int joystick_Y = A1;
+                int button = 12;
+                
+                void setup() {
+                  // put your setup code here, to run once:
+                  pinMode(motor1pin1, OUTPUT);
+                  pinMode(motor1pin2, OUTPUT);
+                  pinMode(motor2pin1, OUTPUT);
+                  pinMode(motor2pin2, OUTPUT);
+                  pinMode (joystick_X, INPUT);
+                  pinMode (joystick_Y, INPUT);
+                  pinMode (button, INPUT);
+                
+                  Serial.begin(9600);
+                 
+                }
+                
+                void loop() {
+                  // put your main code here, to run repeatedly: 
+                int x = analogRead(joystick_X);
+                int y = analogRead(joystick_Y);
+                Serial.println(y, 4);
+                    
+                  if (y >= 550){
+                    digitalWrite(motor1pin1, HIGH);
+                    digitalWrite(motor1pin2, LOW);
+                  }
+                  else if (y <=490){
+                    digitalWrite(motor1pin1, LOW);
+                    digitalWrite(motor1pin2, HIGH);
+                  }
+                  else{
+                    digitalWrite(motor1pin1, LOW);
+                    digitalWrite(motor1pin2, LOW);
+                  }
+                  
+                  if (x >= 550){
+                    digitalWrite(motor2pin1, HIGH);
+                    digitalWrite(motor2pin2, LOW);
+                  }
+                  else if (x <=490){
+                    digitalWrite(motor2pin1, LOW);
+                    digitalWrite(motor2pin2, HIGH);
+                  }
+                  else{
+                    digitalWrite(motor2pin1, LOW);
+                    digitalWrite(motor2pin2, LOW);
+                }
+                }</code></pre>
+          </div>
+        
+        <!--Intro BT-module-->
+        <div class="container">
+        <br>
+        <br>
+        <br>
+        <h2>Code aansturen met bluetooth module</h2>
+        <br>
+        <br>
+        <p>
+            De code voor het aansturen via bluetooth werkt heel ander. Als er een verbinding is, komen er via de app verschillende letters binnen voor elke knop. In dit programma wordt er uitgelezen of die letter overeenkomt met de geprogrammeerde letters, en wordt er telkens een andere actie gedaan afhankelijk van de letter.
+        </p>
+        <br>
+        </div>
+        <!--Code HC-06-->
+        
+        <div class="container">       
+        <pre class="pre-scrollable">
+            <code>
+                char dataIn;
+
+                int motor1pin1 = 2;
+                int motor1pin2 = 3;
+
+                int motor2pin1 = 4;
+                int motor2pin2 = 5;
+
+
+                void setup(){
+                Serial.begin(9600);
+                pinMode(motor1pin1, OUTPUT);
+                pinMode(motor1pin2, OUTPUT);
+                pinMode(motor2pin1, OUTPUT);
+                pinMode(motor2pin2, OUTPUT);
+                Serial.println("start");
+                }
+
+                void loop(){
+                while(Serial.available() > 0){
+                    dataIn = Serial.read();
+                    if (dataIn == 'v'){
+                    digitalWrite(motor1pin1, HIGH);
+                    digitalWrite(motor1pin2, LOW);
+                    digitalWrite(motor2pin1, LOW);
+                    digitalWrite(motor2pin2, LOW);
+                    Serial.println("rijden");
+                    }
+                    if (dataIn == 'a'){
+                    digitalWrite(motor1pin1, LOW);
+                    digitalWrite(motor1pin2, HIGH);
+                    digitalWrite(motor2pin1, LOW);
+                    digitalWrite(motor2pin2, LOW);
+                    Serial.println("naar achter");
+                    }
+                    if (dataIn == 'r'){
+                    digitalWrite(motor1pin1, LOW);
+                    digitalWrite(motor1pin2, LOW);
+                    digitalWrite(motor2pin1, LOW);
+                    digitalWrite(motor2pin2, HIGH);
+                    Serial.println("naar rechts");
+                    }
+                    if (dataIn == 'l'){
+                    digitalWrite(motor1pin1, LOW);
+                    digitalWrite(motor1pin2, LOW);
+                    digitalWrite(motor2pin1, HIGH);
+                    digitalWrite(motor2pin2, LOW);
+                    Serial.println("naar links");
+                    }
+                    }
+                    if (dataIn == 'e'){
+                    digitalWrite(motor1pin1, HIGH);
+                    digitalWrite(motor1pin2, LOW);
+                    digitalWrite(motor2pin1, LOW);
+                    digitalWrite(motor2pin2, HIGH);      
+                    }
+                    if (dataIn == 'q'){
+                    digitalWrite(motor1pin1, HIGH);
+                    digitalWrite(motor1pin2, LOW);
+                    digitalWrite(motor2pin1, HIGH);
+                    digitalWrite(motor2pin2, LOW);        
+                    }
+                    if (dataIn == 'z'){
+                    digitalWrite(motor1pin1, LOW);
+                    digitalWrite(motor1pin2, HIGH);
+                    digitalWrite(motor2pin1, HIGH);
+                    digitalWrite(motor2pin2, LOW);        
+                    }
+                    if (dataIn == 'x'){
+                    digitalWrite(motor1pin1, LOW);
+                    digitalWrite(motor1pin2, HIGH);
+                    digitalWrite(motor2pin1, LOW);
+                    digitalWrite(motor2pin2, HIGH);      
+                    }
+                    if (dataIn == 's'){
+                    digitalWrite(motor1pin1, LOW);
+                    digitalWrite(motor1pin2, LOW);
+                    digitalWrite(motor2pin1, LOW);
+                    digitalWrite(motor2pin2, LOW);       
+                    }
+                }
+            </code>
+        </pre>
+        </div>
+        <!--Intro app-->
+        <div class="container">
+        <br>
+        <br>
+        <br>
+        <h2>De app</h2>
+        <br>
+        <br>
+        <p>
+            Ik heb mijn app gemaakt in de App Inventor van M.I.T. Hij stuurt letters door naar het gekoppeld apparaat, al komen ze overeen met de letters die ik op de Arduino heb geprogrammeerd zal het autootje rijden en/of sturen. Dit systeem is erg veelzijdig aangezien je het in allerhande situaties kan gebruiken. In de App Creator kan je helaas enkel in Scratch prgrammeren, wat het tijdrovender maakt.
+        </p>
+        </div>
+
+
+        <!--Carousel foto's app-->
+        <br>
+        <br>
+        <div class="container">
+            <!--Dots bottom-->
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style = "height:80%">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active" style="background-color:black;"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1" style="background-color:black"></li>
+
+            </ol>
+
+           <!-- Pics-->
+          <div class="carousel-inner" role="listbox" style = "align-items: center;">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="Images/Screenshot_app_frontend.png" alt="Frontend" style = "height:100%; max-width: 500px; margin: auto;">
+              <div class="carousel-caption d-none d-md-block">
+                <h5 style="color:black">Frontend/ user interface van de app </h5>
+                </div>
+            </div>
+            <div class="carousel-item">
+              <img class="d-block w-100" src="Images/Screenshot_app_backend.png" alt="Backend" style = "height:100%">
+              <div class="carousel-caption d-none d-md-block">
+                <h5 style="color:black">Backend/ achterliggende logica van de app</h5>
+            </div>
+            </div>
+            </div>
+            </div>
+        <!--Footer-->
+        <br>
+        <br>
+        <div class="container-fluid">
+        <footer style="background: #dcdcdc;" class="page-footer font-small black">
+            <div class="text-right">
+              <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button" style ="border-color: black;"><i class="fas fa-chevron-up"></i> Back to top</a>
+            </div>
+            <div class="footer-copyright text-center py-3">
+            <a href="https://dazzling-mcnulty-36d4a9.netlify.app"> Mijn blog</a>
+            </div>
+            <div class="footer-copyright text-center py-3">Ontwikkeld door Jelle Verstappen 6IICT
+            </div>
+          </div>
+         </footer>
+      </div>
+    </div> 
+    </body>
+    </html>
