@@ -1,4 +1,5 @@
 <html>
+  <title>GIP Jelle Verstappen</title>
      <body style ="background-image: linear-gradient(#FFFFFF, rgb(255, 122, 89));">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -137,7 +138,12 @@
 
 
                 <!--Accordion-->
+                <br>
+                <br>
                 <div class="container">
+                  <h2>Proces</h2>
+                  <br>
+                  <br>
                   <div class="accordion" id="accordionExample" style="background:#dcdcdc">
                     <div class="border">
                     <div class="item">
@@ -228,11 +234,57 @@
                         </div>
                       </div>
                    </div>
+                   <div class="item">
+                    <div class="item-header" id="headingSix">
+                       <h2 class="mb-0">
+                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                             data-target="#collapseSix" aria-expanded="false"
+                             aria-controls="collapseSix">
+                          6. Hosten blog en website
+                          <i class="fa fa-angle-down"></i>
+                          </button>
+                       </h2>
+                    </div>
+                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
+                       data-parent="#accordionExample">
+                       <div class="t-p">
+                        Na dat alles werkte ben ik begonnen met het maken van de website. Natuurlijk moet het ook ergens gehost worden, normaal gezien zouden we voor 1 van de 2 sites Github Pages gebruiken. Hierbij heb ik wat problemen mee ondervonden, zoals het linken dat niet werkte zoals gewenst. Daarom host ik beide websites via Netlify.
+                      </div>
+                    </div>
+                 </div>
+                 <div class="item">
+                  <div class="item-header" id="headingSeven">
+                     <h2 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                           data-target="#collapseSeven" aria-expanded="false"
+                           aria-controls="collapseSeven">
+                        7. Ontwikkelen website en blog
+                        <i class="fa fa-angle-down"></i>
+                        </button>
+                     </h2>
                   </div>
+                  <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven"
+                     data-parent="#accordionExample">
+                     <div class="t-p">
+                      Ik heb de blog gemaakt met Pelican, deze genereerd website uit kleine tekst bestandjes. Ik maak gebruik van het thema dat meneer T. Issaris gemaakt heeft voor ons. De website heb ik gemaakt met Bootstrap, dit laat je toe om redeljk snel een mooie website te designen. 
+                    </div>
                   </div>
-                  </div>
+               </div>
+              </div>
+            </div>
+          </div>
 
-
+          <!--Elektrisch shema + uitleg-->
+          <br>
+          <br>
+          <br>
+          <div class="container">
+          <h2>Elektrisch schema</h2>
+          <br>
+          <br>
+          <p>In het volgend schema kan je alle gebruikte componenten zien en hoe ik ze aansluit, hierdoor kan ik de werking wat makkelijker uitleggen. Zoals je kan zien wordt elk component door een powerbank van stroom voorzien. De bluetooth module is op de zender en ontvanger aangesloten van de Arduino. Afhankeljk van deze data gaan er uitgangen hoog of laag(pin 2 t.e.m.5), naargelang deze 4 signalen zal de motor driver één, of allebij de motoren aansturen voor voor of achteruit te gaan.</p>
+          <img class="d-block w-100" src="Images/Elektrisch_schema.png" alt="Screenshot van het elektrisch schema" style = "height:100%; max-width: 900px; margin: auto;">
+        </div>
 
           <!--Footer-->
           <br>
@@ -252,7 +304,6 @@
             </div>
            </footer>
         </div>
-          </html>
     </body>
 </html>
 
