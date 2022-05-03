@@ -50,64 +50,55 @@
 
         <!--Code joystick-->
           <div class="container">
-              <pre class="pre-scrollable" style="background-color:whitesmoke;">
+              <pre class="pre-scrollable" style="background-color:darkslategrey;">
                 <code class = "language-c++">
-                int motor1pin1 = 2;
-                int motor1pin2 = 3;
-                
-                int motor2pin1 = 4;
-                int motor2pin2 = 5;
-                
-                int joystick_X = A0;
-                int joystick_Y = A1;
-                int button = 12;
-                
-                void setup() {
-                  // put your setup code here, to run once:
-                  pinMode(motor1pin1, OUTPUT);
-                  pinMode(motor1pin2, OUTPUT);
-                  pinMode(motor2pin1, OUTPUT);
-                  pinMode(motor2pin2, OUTPUT);
-                  pinMode (joystick_X, INPUT);
-                  pinMode (joystick_Y, INPUT);
-                  pinMode (button, INPUT);
-                
-                  Serial.begin(9600);
-                 
-                }
-                
-                void loop() {
-                  // put your main code here, to run repeatedly: 
-                int x = analogRead(joystick_X);
-                int y = analogRead(joystick_Y);
-                Serial.println(y, 4);
-                    
-                  if (y >= 550){
-                    digitalWrite(motor1pin1, HIGH);
-                    digitalWrite(motor1pin2, LOW);
-                  }
-                  else if (y <=490){
-                    digitalWrite(motor1pin1, LOW);
-                    digitalWrite(motor1pin2, HIGH);
-                  }
-                  else{
-                    digitalWrite(motor1pin1, LOW);
-                    digitalWrite(motor1pin2, LOW);
-                  }
                   
-                  if (x >= 550){
-                    digitalWrite(motor2pin1, HIGH);
-                    digitalWrite(motor2pin2, LOW);
-                  }
-                  else if (x <=490){
-                    digitalWrite(motor2pin1, LOW);
-                    digitalWrite(motor2pin2, HIGH);
-                  }
-                  else{
-                    digitalWrite(motor2pin1, LOW);
-                    digitalWrite(motor2pin2, LOW);
-                }
-                }</code></pre>
+                    <font color="#78dbe7">int</font> <font color="#f8f8f2">JoyStick_X</font> <font color="#a8db75">=</font> <font color="#f8f8f2">A0</font><font color="#f8f8f2">;</font> <font color="#434f54">&#47;&#47; X-axis signal</font>
+                    <font color="#78dbe7">int</font> <font color="#f8f8f2">JoyStick_Y</font> <font color="#a8db75">=</font> <font color="#f8f8f2">A1</font><font color="#f8f8f2">;</font> <font color="#434f54">&#47;&#47; Y-axis signal</font>
+                    <font color="#78dbe7">int</font> <font color="#f8f8f2">Button</font> <font color="#a8db75">=</font> <font color="#ffcd22">3</font><font color="#f8f8f2">;</font> <font color="#434f54">&#47;&#47; Button</font>
+                     
+                    <font color="#78dbe7">void</font> <font color="#a99cf2">setup</font> <font color="#e8e2b7">(</font><font color="#e8e2b7">)</font>
+                    <font color="#e8e2b7">{</font>
+                     &nbsp;<font color="#78dbe7">pinMode</font> <font color="#e8e2b7">(</font><font color="#f8f8f2">JoyStick_X</font><font color="#a8db75">,</font> <font color="#78dbe7">INPUT</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                     &nbsp;<font color="#78dbe7">pinMode</font> <font color="#e8e2b7">(</font><font color="#f8f8f2">JoyStick_Y</font><font color="#a8db75">,</font> <font color="#78dbe7">INPUT</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                     &nbsp;<font color="#78dbe7">pinMode</font> <font color="#e8e2b7">(</font><font color="#f8f8f2">Button</font><font color="#a8db75">,</font> <font color="#78dbe7">INPUT</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                     &nbsp;&nbsp;
+                     &nbsp;<font color="#434f54">&#47;&#47; Since the button pulls the signal to ground when pressed,</font>
+                     &nbsp;<font color="#434f54">&#47;&#47; here we switch on the pullup resistor</font>
+                     &nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">Button</font><font color="#a8db75">,</font> <font color="#78dbe7">HIGH</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font> &nbsp;
+                     &nbsp;&nbsp;
+                     &nbsp;<b><font color="#a8db75">Serial</font></b><font color="#a8db75">.</font><font color="#78dbe7">begin</font> <font color="#e8e2b7">(</font><font color="#ffcd22">9600</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font> <font color="#434f54">&#47;&#47; Serial output with 9600 bps</font>
+                    <font color="#e8e2b7">}</font>
+                     
+                    <font color="#434f54">&#47;&#47; The program reads the current values of the input pins</font>
+                    <font color="#434f54">&#47;&#47; and outputs them to the serial output</font>
+                    <font color="#78dbe7">void</font> <font color="#a99cf2">loop</font> <font color="#e8e2b7">(</font><font color="#e8e2b7">)</font>
+                    <font color="#e8e2b7">{</font>
+                     &nbsp;<font color="#78dbe7">float</font> <font color="#f8f8f2">x</font><font color="#a8db75">,</font> <font color="#f8f8f2">y</font><font color="#f8f8f2">;</font>
+                     &nbsp;<font color="#78dbe7">int</font> <font color="#f8f8f2">button</font><font color="#f8f8f2">;</font>
+                     &nbsp;&nbsp;
+                     &nbsp;<font color="#434f54">&#47;&#47;Actual values are read, converted to the voltage value....</font>
+                     &nbsp;<font color="#f8f8f2">x</font> <font color="#a8db75">=</font> <font color="#78dbe7">analogRead</font> <font color="#e8e2b7">(</font><font color="#f8f8f2">JoyStick_X</font><font color="#e8e2b7">)</font> <font color="#a8db75">*</font> <font color="#e8e2b7">(</font><font color="#ffcd22">5.0</font> <font color="#a8db75">&#47;</font> <font color="#ffcd22">1023.0</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font> 
+                     &nbsp;<font color="#f8f8f2">y</font> <font color="#a8db75">=</font> <font color="#78dbe7">analogRead</font> <font color="#e8e2b7">(</font><font color="#f8f8f2">JoyStick_Y</font><font color="#e8e2b7">)</font> <font color="#a8db75">*</font> <font color="#e8e2b7">(</font><font color="#ffcd22">5.0</font> <font color="#a8db75">&#47;</font> <font color="#ffcd22">1023.0</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                     &nbsp;<font color="#f8f8f2">button</font> <font color="#a8db75">=</font> <font color="#78dbe7">digitalRead</font> <font color="#e8e2b7">(</font><font color="#f8f8f2">Button</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                     &nbsp;&nbsp;
+                     &nbsp;<font color="#434f54">&#47;&#47;... and output at this position</font>
+                     &nbsp;<b><font color="#a8db75">Serial</font></b><font color="#a8db75">.</font><font color="#78dbe7">print</font> <font color="#e8e2b7">(</font><font color="#a99cf2">&#34;X axis:&#34;</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font> <b><font color="#a8db75">Serial</font></b><font color="#a8db75">.</font><font color="#78dbe7">print</font> <font color="#e8e2b7">(</font><font color="#f8f8f2">x</font><font color="#a8db75">,</font> <font color="#ffcd22">4</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font> <b><font color="#a8db75">Serial</font></b><font color="#a8db75">.</font><font color="#78dbe7">print</font> <font color="#e8e2b7">(</font><font color="#a99cf2">&#34;V, &#34;</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                     &nbsp;<b><font color="#a8db75">Serial</font></b><font color="#a8db75">.</font><font color="#78dbe7">print</font> <font color="#e8e2b7">(</font><font color="#a99cf2">&#34;Y axis:&#34;</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font> <b><font color="#a8db75">Serial</font></b><font color="#a8db75">.</font><font color="#78dbe7">print</font> <font color="#e8e2b7">(</font><font color="#f8f8f2">y</font><font color="#a8db75">,</font> <font color="#ffcd22">4</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font> <b><font color="#a8db75">Serial</font></b><font color="#a8db75">.</font><font color="#78dbe7">print</font> <font color="#e8e2b7">(</font><font color="#a99cf2">&#34;V, &#34;</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                     &nbsp;<b><font color="#a8db75">Serial</font></b><font color="#a8db75">.</font><font color="#78dbe7">print</font> <font color="#e8e2b7">(</font><font color="#a99cf2">&#34;Button:&#34;</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                     
+                     &nbsp;<font color="#a99cf2">if</font><font color="#e8e2b7">(</font><font color="#f8f8f2">button</font><font color="#a8db75">==</font><font color="#ffcd22">1</font><font color="#e8e2b7">)</font>
+                     &nbsp;<font color="#e8e2b7">{</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#a8db75">Serial</font></b><font color="#a8db75">.</font><font color="#78dbe7">println</font> <font color="#e8e2b7">(</font><font color="#a99cf2">&#34;not pressed&#34;</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                     &nbsp;<font color="#e8e2b7">}</font>
+                     &nbsp;<font color="#a99cf2">else</font>
+                     &nbsp;<font color="#e8e2b7">{</font>
+                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#a8db75">Serial</font></b><font color="#a8db75">.</font><font color="#78dbe7">println</font> <font color="#e8e2b7">(</font><font color="#a99cf2">&#34;pressed&#34;</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                     &nbsp;<font color="#e8e2b7">}</font>
+                     &nbsp;<font color="#78dbe7">delay</font> <font color="#e8e2b7">(</font><font color="#ffcd22">200</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                    <font color="#e8e2b7">}</font>
+                    
+                    </code></pre>
           </div>
         
         <!--Intro BT-module-->
@@ -126,89 +117,90 @@
         <!--Code HC-06-->
         
         <div class="container">       
-        <pre class="pre-scrollable" style="background-color:whitesmoke">
+        <pre class="pre-scrollable" style="background-color:darkslategrey">
             <code>
-                char dataIn;
-
-                int motor1pin1 = 2;
-                int motor1pin2 = 3;
-
-                int motor2pin1 = 4;
-                int motor2pin2 = 5;
-
-
-                void setup(){
-                Serial.begin(9600);
-                pinMode(motor1pin1, OUTPUT);
-                pinMode(motor1pin2, OUTPUT);
-                pinMode(motor2pin1, OUTPUT);
-                pinMode(motor2pin2, OUTPUT);
-                Serial.println("start");
-                }
-
-                void loop(){
-                while(Serial.available() > 0){
-                    dataIn = Serial.read();
-                    if (dataIn == 'v'){
-                    digitalWrite(motor1pin1, HIGH);
-                    digitalWrite(motor1pin2, LOW);
-                    digitalWrite(motor2pin1, LOW);
-                    digitalWrite(motor2pin2, LOW);
-                    Serial.println("rijden");
-                    }
-                    if (dataIn == 'a'){
-                    digitalWrite(motor1pin1, LOW);
-                    digitalWrite(motor1pin2, HIGH);
-                    digitalWrite(motor2pin1, LOW);
-                    digitalWrite(motor2pin2, LOW);
-                    Serial.println("naar achter");
-                    }
-                    if (dataIn == 'r'){
-                    digitalWrite(motor1pin1, LOW);
-                    digitalWrite(motor1pin2, LOW);
-                    digitalWrite(motor2pin1, LOW);
-                    digitalWrite(motor2pin2, HIGH);
-                    Serial.println("naar rechts");
-                    }
-                    if (dataIn == 'l'){
-                    digitalWrite(motor1pin1, LOW);
-                    digitalWrite(motor1pin2, LOW);
-                    digitalWrite(motor2pin1, HIGH);
-                    digitalWrite(motor2pin2, LOW);
-                    Serial.println("naar links");
-                    }
-                    }
-                    if (dataIn == 'e'){
-                    digitalWrite(motor1pin1, HIGH);
-                    digitalWrite(motor1pin2, LOW);
-                    digitalWrite(motor2pin1, LOW);
-                    digitalWrite(motor2pin2, HIGH);      
-                    }
-                    if (dataIn == 'q'){
-                    digitalWrite(motor1pin1, HIGH);
-                    digitalWrite(motor1pin2, LOW);
-                    digitalWrite(motor2pin1, HIGH);
-                    digitalWrite(motor2pin2, LOW);        
-                    }
-                    if (dataIn == 'z'){
-                    digitalWrite(motor1pin1, LOW);
-                    digitalWrite(motor1pin2, HIGH);
-                    digitalWrite(motor2pin1, HIGH);
-                    digitalWrite(motor2pin2, LOW);        
-                    }
-                    if (dataIn == 'x'){
-                    digitalWrite(motor1pin1, LOW);
-                    digitalWrite(motor1pin2, HIGH);
-                    digitalWrite(motor2pin1, LOW);
-                    digitalWrite(motor2pin2, HIGH);      
-                    }
-                    if (dataIn == 's'){
-                    digitalWrite(motor1pin1, LOW);
-                    digitalWrite(motor1pin2, LOW);
-                    digitalWrite(motor2pin1, LOW);
-                    digitalWrite(motor2pin2, LOW);       
-                    }
-                }
+                <font color="#78dbe7">char</font> <font color="#f8f8f2">dataIn</font><font color="#f8f8f2">;</font>
+                
+                <font color="#78dbe7">int</font> <font color="#f8f8f2">motor1pin1</font> <font color="#a8db75">=</font> <font color="#ffcd22">2</font><font color="#f8f8f2">;</font>
+                <font color="#78dbe7">int</font> <font color="#f8f8f2">motor1pin2</font> <font color="#a8db75">=</font> <font color="#ffcd22">3</font><font color="#f8f8f2">;</font>
+                
+                <font color="#78dbe7">int</font> <font color="#f8f8f2">motor2pin1</font> <font color="#a8db75">=</font> <font color="#ffcd22">4</font><font color="#f8f8f2">;</font>
+                <font color="#78dbe7">int</font> <font color="#f8f8f2">motor2pin2</font> <font color="#a8db75">=</font> <font color="#ffcd22">5</font><font color="#f8f8f2">;</font>
+                
+                
+                <font color="#78dbe7">void</font> <font color="#a99cf2">setup</font><font color="#e8e2b7">(</font><font color="#e8e2b7">)</font><font color="#e8e2b7">{</font>
+                 &nbsp;<b><font color="#a8db75">Serial</font></b><font color="#a8db75">.</font><font color="#78dbe7">begin</font><font color="#e8e2b7">(</font><font color="#ffcd22">9600</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;<font color="#78dbe7">pinMode</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">OUTPUT</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;<font color="#78dbe7">pinMode</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">OUTPUT</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;<font color="#78dbe7">pinMode</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">OUTPUT</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;<font color="#78dbe7">pinMode</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">OUTPUT</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;<b><font color="#a8db75">Serial</font></b><font color="#a8db75">.</font><font color="#78dbe7">println</font><font color="#e8e2b7">(</font><font color="#a99cf2">&#34;start&#34;</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                <font color="#e8e2b7">}</font>
+                
+                <font color="#78dbe7">void</font> <font color="#a99cf2">loop</font><font color="#e8e2b7">(</font><font color="#e8e2b7">)</font><font color="#e8e2b7">{</font>
+                 &nbsp;<font color="#a99cf2">while</font><font color="#e8e2b7">(</font><b><font color="#a8db75">Serial</font></b><font color="#a8db75">.</font><font color="#78dbe7">available</font><font color="#e8e2b7">(</font><font color="#e8e2b7">)</font> <font color="#a8db75">&gt;</font> <font color="#ffcd22">0</font><font color="#e8e2b7">)</font><font color="#e8e2b7">{</font>
+                 &nbsp;&nbsp;&nbsp;<font color="#f8f8f2">dataIn</font> <font color="#a8db75">=</font> <b><font color="#a8db75">Serial</font></b><font color="#a8db75">.</font><font color="#78dbe7">read</font><font color="#e8e2b7">(</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;<font color="#a99cf2">if</font> <font color="#e8e2b7">(</font><font color="#f8f8f2">dataIn</font> <font color="#a8db75">==</font> <font color="#78dbe7">&#39;v&#39;</font><font color="#e8e2b7">)</font><font color="#e8e2b7">{</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">HIGH</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#a8db75">Serial</font></b><font color="#a8db75">.</font><font color="#78dbe7">println</font><font color="#e8e2b7">(</font><font color="#a99cf2">&#34;rijden&#34;</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#e8e2b7">}</font>
+                 &nbsp;&nbsp;&nbsp;<font color="#a99cf2">if</font> <font color="#e8e2b7">(</font><font color="#f8f8f2">dataIn</font> <font color="#a8db75">==</font> <font color="#78dbe7">&#39;a&#39;</font><font color="#e8e2b7">)</font><font color="#e8e2b7">{</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">HIGH</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#a8db75">Serial</font></b><font color="#a8db75">.</font><font color="#78dbe7">println</font><font color="#e8e2b7">(</font><font color="#a99cf2">&#34;naar achter&#34;</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;<font color="#e8e2b7">}</font>
+                 &nbsp;&nbsp;&nbsp;<font color="#a99cf2">if</font> <font color="#e8e2b7">(</font><font color="#f8f8f2">dataIn</font> <font color="#a8db75">==</font> <font color="#78dbe7">&#39;r&#39;</font><font color="#e8e2b7">)</font><font color="#e8e2b7">{</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">HIGH</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#a8db75">Serial</font></b><font color="#a8db75">.</font><font color="#78dbe7">println</font><font color="#e8e2b7">(</font><font color="#a99cf2">&#34;naar rechts&#34;</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;<font color="#e8e2b7">}</font>
+                 &nbsp;&nbsp;&nbsp;<font color="#a99cf2">if</font> <font color="#e8e2b7">(</font><font color="#f8f8f2">dataIn</font> <font color="#a8db75">==</font> <font color="#78dbe7">&#39;l&#39;</font><font color="#e8e2b7">)</font><font color="#e8e2b7">{</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">HIGH</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#a8db75">Serial</font></b><font color="#a8db75">.</font><font color="#78dbe7">println</font><font color="#e8e2b7">(</font><font color="#a99cf2">&#34;naar links&#34;</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;<font color="#e8e2b7">}</font>
+                 &nbsp;&nbsp;&nbsp;<font color="#e8e2b7">}</font>
+                 &nbsp;&nbsp;&nbsp;<font color="#a99cf2">if</font> <font color="#e8e2b7">(</font><font color="#f8f8f2">dataIn</font> <font color="#a8db75">==</font> <font color="#78dbe7">&#39;e&#39;</font><font color="#e8e2b7">)</font><font color="#e8e2b7">{</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">HIGH</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">HIGH</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;<font color="#e8e2b7">}</font>
+                 &nbsp;&nbsp;&nbsp;<font color="#a99cf2">if</font> <font color="#e8e2b7">(</font><font color="#f8f8f2">dataIn</font> <font color="#a8db75">==</font> <font color="#78dbe7">&#39;q&#39;</font><font color="#e8e2b7">)</font><font color="#e8e2b7">{</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">HIGH</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">HIGH</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;<font color="#e8e2b7">}</font>
+                 &nbsp;&nbsp;&nbsp;<font color="#a99cf2">if</font> <font color="#e8e2b7">(</font><font color="#f8f8f2">dataIn</font> <font color="#a8db75">==</font> <font color="#78dbe7">&#39;z&#39;</font><font color="#e8e2b7">)</font><font color="#e8e2b7">{</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">HIGH</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">HIGH</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;<font color="#e8e2b7">}</font>
+                 &nbsp;&nbsp;&nbsp;<font color="#a99cf2">if</font> <font color="#e8e2b7">(</font><font color="#f8f8f2">dataIn</font> <font color="#a8db75">==</font> <font color="#78dbe7">&#39;x&#39;</font><font color="#e8e2b7">)</font><font color="#e8e2b7">{</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">HIGH</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">HIGH</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;<font color="#e8e2b7">}</font>
+                 &nbsp;&nbsp;&nbsp;<font color="#a99cf2">if</font> <font color="#e8e2b7">(</font><font color="#f8f8f2">dataIn</font> <font color="#a8db75">==</font> <font color="#78dbe7">&#39;s&#39;</font><font color="#e8e2b7">)</font><font color="#e8e2b7">{</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor1pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin1</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#78dbe7">digitalWrite</font><font color="#e8e2b7">(</font><font color="#f8f8f2">motor2pin2</font><font color="#a8db75">,</font> <font color="#78dbe7">LOW</font><font color="#e8e2b7">)</font><font color="#f8f8f2">;</font> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;<font color="#e8e2b7">}</font>
+                 &nbsp;<font color="#e8e2b7">}</font>
+                
             </code>
         </pre>
         </div>
