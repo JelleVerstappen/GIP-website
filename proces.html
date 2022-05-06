@@ -1,0 +1,239 @@
+<html>
+  <title>GIP Jelle Verstappen</title>
+     <body style ="background-image: linear-gradient(#FFFFFF, rgb(255, 122, 89));">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+      <!--Navbar-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Website RC-car</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="https://mystifying-chandrasekhar-a9c848.netlify.app">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="proces.html">Proces</a>
+                  </li>
+                  </li>
+                  <li class="nav-item">
+                    <a class = "nav-link active" href="schema.html">Schema</a>
+                  </li>
+                  </li>
+                  <li class="nav-item">
+                    <a class = "nav-link active" href="code.html">Code</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="https://dazzling-mcnulty-36d4a9.netlify.app">Blog</a>
+                </ul>
+              </div>
+              <span class="navbar-text">
+                GIP Jelle Verstappen 6IICT
+              </span>
+            </div>
+          </nav>
+
+<!--Accordion-->
+<br>
+<br>
+<div class="container">
+  <h2>Proces</h2>
+  <br>
+  <br>
+  <div class="accordion" id="accordionExample" style="background:#dcdcdc">
+    <div class="border">
+    <div class="item">
+       <div class="item-header" id="headingOne">
+          <h2 class="mb-0">
+             <button class="btn btn-link" type="button" data-toggle="collapse"
+                data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              1. Research datasheets van componenten
+             <i class="fa fa-angle-down"></i>
+             </button>
+          </h2>
+       </div>
+       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+          data-parent="#accordionExample">
+          <div class="t-p">
+            Eerst keek ik wat voor componenten ik het best zou gebruiken. Ook zocht ik hier op hoe ik ze best kon aansluiten.
+          </div>
+       </div>
+    </div>
+    <div class="item">
+       <div class="item-header" id="headingTwo">
+          <h2 class="mb-0">
+             <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+             2. Aansluiten en besturen via joystick
+             <i class="fa fa-angle-down"></i>
+             </button>
+          </h2>
+       </div>
+       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+          data-parent="#accordionExample">
+          <div class="t-p">
+            Toen maakte ik alle aansluitingen van de joystick en bestuurde ik er 2 motors mee, gebruikmakende van de motordriver(LN298N).
+          </div>
+       </div>
+    </div>
+    <div class="item">
+       <div class="item-header" id="headingThree">
+          <h2 class="mb-0">
+             <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                data-target="#collapseThree" aria-expanded="false"
+                aria-controls="collapseThree">
+             3. Werking bluetooth module(HC-06) uitzoeken
+             <i class="fa fa-angle-down"></i>
+             </button>
+          </h2>
+       </div>
+       <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+          data-parent="#accordionExample">
+          <div class="t-p">
+            Hierna begon ik aan het regelen via een bluetooth module, tijdens deze fase liep ik soms vast omdat er fouten waren in het programma. Gelukkig heb ik de fouten eruit kunnen halen en werkt alles nu perfect. 
+          </div>
+       </div>
+    </div>
+    <div class="item">
+       <div class="item-header" id="headingFour">
+          <h2 class="mb-0">
+             <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                data-target="#collapseFour" aria-expanded="false"
+                aria-controls="collapseFour">
+             4. Demonteren van de auto
+             <i class="fa fa-angle-down"></i>
+             </button>
+          </h2>
+       </div>
+       <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+          data-parent="#accordionExample">
+          <div class="t-p">
+             Nu dat ik al het regelen en aansturen zo goed als volledig uitgewerkt heb, kan ik beginnen aan het demonteren van de auto en kijken welke componenten waar passen.
+          </div>
+       </div>
+    </div>
+    <div class="item">
+      <div class="item-header" id="headingFive">
+         <h2 class="mb-0">
+            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+               data-target="#collapseFive" aria-expanded="false"
+               aria-controls="collapseFive">
+            5. Ontwikkelen app
+            <i class="fa fa-angle-down"></i>
+            </button>
+         </h2>
+      </div>
+      <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+         data-parent="#accordionExample">
+         <div class="t-p">
+          Ik ben hier begonnen met het ontwikkelen van mijn app. Dit heb ik gedaan via de App Inventor van M.I.T.(Massachussets Institute of Technology). Deze stuurt data door naar de HC-06, hiermee bestuur je de auto.
+        </div>
+      </div>
+   </div>
+   <div class="item">
+    <div class="item-header" id="headingSix">
+       <h2 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+             data-target="#collapseSix" aria-expanded="false"
+             aria-controls="collapseSix">
+          6. Hosten blog en website
+          <i class="fa fa-angle-down"></i>
+          </button>
+       </h2>
+    </div>
+    <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
+       data-parent="#accordionExample">
+       <div class="t-p">
+        Na dat alles werkte ben ik begonnen met het maken van de website. Natuurlijk moet het ook ergens gehost worden, normaal gezien zouden we voor 1 van de 2 sites Github Pages gebruiken. Hierbij heb ik wat problemen mee ondervonden, zoals het linken dat niet werkte zoals gewenst. Daarom host ik beide websites via Netlify.
+      </div>
+    </div>
+ </div>
+ <div class="item">
+  <div class="item-header" id="headingSeven">
+     <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+           data-target="#collapseSeven" aria-expanded="false"
+           aria-controls="collapseSeven">
+        7. Ontwikkelen website en blog
+        <i class="fa fa-angle-down"></i>
+        </button>
+     </h2>
+  </div>
+  <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven"
+     data-parent="#accordionExample">
+     <div class="t-p">
+      Ik heb de blog gemaakt met Pelican, deze genereerd website uit kleine tekst bestandjes. Ik maak gebruik van het thema dat meneer T. Issaris gemaakt heeft voor ons. De website heb ik gemaakt met Bootstrap, dit laat je toe om redeljk snel een mooie website te designen. 
+    </div>
+  </div>
+</div>
+<div class="item">
+    <div class="item-header" id="headingEight">
+       <h2 class="mb-0">
+          <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+             data-target="#collapseEight" aria-expanded="false"
+             aria-controls="collapseEight">
+          8. Draadloos maken van de auto
+          <i class="fa fa-angle-down"></i>
+          </button>
+       </h2>
+    </div>
+    <div id="collapseEight" class="collapse" aria-labelledby="headingEight"
+       data-parent="#accordionExample">
+       <div class="t-p">
+        Een RC-auto aan een kabel is natuurlijk nooit fijn, omdat je met een gelimiteerd bereik zit. Daarom heb ik mijn autootje draadloos gemaakt, Hij wordt van stroom voorzien door een on-board powerbank. Het draadloos communiceren werkte al, via bluetooth met een bereik van 100m. Dit is aanzienlijk meer dan het bereik dat je zal krijgen over een kabel.
+        </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!--Problemen/Oplossingen-->
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <h2>Problemen en hun oplossingen</h2>
+<br>
+<br>
+<p>Natuurlijk, loopt niet alles zo soepel als je wil. Hier is een opsomming van de problemen die ik heb ondervonden.</p>
+<br>
+<br>
+<ul>
+    <li><h3>Communicatie HC-06</h3><br><p>Aan de start had ik het probleem dat mijn commando's om het autootje te besturen niet fantsoenlijk doorkwamen. Dit kwam omdat ik telken een 'char' binnenkreeg, dit is 1 karakter. Ik probeerde woorden door te sturen, hierdoor pakte hij enkel de laatste letter van het woord. Dit resulteerde in het onbestuurbaar maken van het autootje.</p></li>
+    <br>
+    <li><h3>Aansluiten powerbank</h3><br><p>Ook had ik een paar problemen met het aansluiten van de powerbank, ik had alle minnen niet samengelegd, hierdoor werd de spanning iets lager. De motor driver kon hierdoor niet aan, omdat hij 5V vereist.</p></li>
+    <br>
+    <li><h3>Ruimte in de auto</h3><br><p>Dit probleem is eigenlijk het meest aanwezige, aangezien hier niet echt een oplossing voor is. De ruimte in het autootje is nu eenmaal beperkt, en daar moest ik zien om heen te werken. Door een compact design en het soms weghalen van delen van de auto om plaats te maken, heb ik toch alles in de auto kunnen passen.</p></li>
+</ul>
+</div>
+
+<!--Footer-->
+<br>
+<br>
+<div class="container-fluid">
+<footer style="background: #dcdcdc;" class="page-footer font-small black">
+  <!-- Copyright -->
+
+    <div class="text-right">
+      <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button" style ="border-color: black;"><i class="fas fa-chevron-up"></i> Back to top</a>
+    </div>
+    <div class="footer-copyright text-center py-3">
+    <a href="https://dazzling-mcnulty-36d4a9.netlify.app"> Mijn blog</a>
+    </div>
+    <div class="footer-copyright text-center py-3">Ontwikkeld door Jelle Verstappen 6IICT
+    </div>
+  </div>
+ </footer>
+</div>
+</body>
+</html>
